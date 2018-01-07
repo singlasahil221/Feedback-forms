@@ -94,9 +94,9 @@ WSGI_APPLICATION = 'forms.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mqntlzyq',
-        'USER': 'mqntlzyq',
-        'PASSWORD': '27m6Y8Ije6Tb8sVp6NuePKpwRSMKap4U',
+        'NAME': 'yblgvyuy',
+        'USER': 'yblgvyuy',
+        'PASSWORD': 'ODDTQulwQpx-I6s7kuJk2h_E3ZgVWni2',
         'HOST': 'baasu.db.elephantsql.com',
         'PORT': '5432',
     }
