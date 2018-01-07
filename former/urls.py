@@ -9,10 +9,7 @@ from former import views as app_views
 admin.autodiscover()
 
 urlpatterns =[
-<<<<<<< HEAD
-=======
 	#url(r'^$', app_views.home, name='home'),
->>>>>>> 95ac8cf8c52dc3e7627810cce828ce2763914ca8
 	url(r'^newform/$', app_views.getQ),
 	url(r'^login/$',app_views.login_view),
 	url(r'^logout/$',logout_views),

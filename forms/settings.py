@@ -65,12 +65,6 @@ MIDDLEWARE = [
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-<<<<<<< HEAD
-=======
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
->>>>>>> 95ac8cf8c52dc3e7627810cce828ce2763914ca8
 
 ROOT_URLCONF = 'forms.urls'
 
@@ -108,13 +102,10 @@ DATABASES = {
     }
 }
 
-<<<<<<< HEAD
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-=======
->>>>>>> 95ac8cf8c52dc3e7627810cce828ce2763914ca8
 LOGIN_REDIRECT_URL = '/'
 
 # Password validation
