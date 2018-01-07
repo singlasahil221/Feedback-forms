@@ -126,6 +126,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SITE_URL = 'https://feedbackforms.herokuapp.com/'
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =  '161432471835-ctikmpartbj9ac0c49u7sjlm7vcra0gr.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '118Ae0SiaKhFvaoPfzk_oVh9'
 
@@ -160,8 +166,4 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'staticfiles'),
 )
 
-SITE_URL = 'https://feedback-forms.herokuapp.com/'
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
