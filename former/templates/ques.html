@@ -18,14 +18,16 @@
 	{%csrf_token %}
 <div class = "main1">
 {% for i in questions %}
+<div class="required">
 <label>{{i.ques}}</label>
 {% if i.qtype == '1' %}
-<input type="text" name="array[]" placeholder="{{i}}"><br>
+<input type="text" name="array[]" placeholder="{{i}}" required><span class="asterisk_input"></span><br>
 {% elif i.qtype == '2' %}
-<input type="number" name="array[]" placeholder="{{i}}"><br>
+<input type="number" name="array[]" placeholder="{{i}}" required><span class="asterisk_input"></span><br>
 {% else %}
-<input type="date" name="array[]" placeholder="{{i}}"><br>
+<input type="date" name="array[]" placeholder="{{i}}" required><span class="asterisk_input"></span><br>
 {%endif%}
+</div>
 {% endfor %}
 
 <button type="submit" class="submit">SUBMIT</button>

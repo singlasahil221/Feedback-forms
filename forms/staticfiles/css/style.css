@@ -1,23 +1,39 @@
+body {
+    font-family: 'Jura', sans-serif;
+    background:#301a47;
+}
+
 .container
 {
+  color: #000000;
 	margin:auto;
-	background-color: #4262f4;
+	background-color: #f8f9f4;
 	text-align:center;
+  
+}
 
+.asterisk_input:after {
+content:" *"; 
+color: #e32;
+position: absolute; 
+margin: 0px 0px 0px -10px; 
+font-size: large; 
+padding: 0 2px 0 0;
 }
 
 /*ADD FIELD BUTTON */
 a,button{text-decoration:none;color:#fff;font-weight:bold;}
 .add-field{
- padding:10px;
+ padding:5px;
  font-family:tahoma;
- background-color:#F57900;
- width:10px;
+ background-color: #000000;
+ width: 15px;
  text-align:center;
  display: block;
  margin:auto;
  clear: both;
- border-radius: 50%;
+ border-radius: 100%;
+ color: #ffffff ;
 }
 
 /*--------------------------------------------------------------------------------------*/
@@ -25,14 +41,15 @@ a,button{text-decoration:none;color:#fff;font-weight:bold;}
 {
 	padding:15px;
  font-family:tahoma;
- background-color:#122c91;
+ background-color: #ffffff;
  width:140px;
  text-align:center;
- text-shadow:1px 1px #4a6ae2;
- border-bottom:5px solid #4a6ae2;
+ text-shadow:1px 1px #ffffff;
+ border-bottom:5px solid #ffffff;
  display: block;
  margin:auto;
  clear: both;
+ color: #000000 ;
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -40,7 +57,8 @@ a,button{text-decoration:none;color:#fff;font-weight:bold;}
 
 .dropdown , .list
 {
-	background-color: #122c91;
+	background-color: #ffffff;
+  color: #000000;
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -48,7 +66,8 @@ a,button{text-decoration:none;color:#fff;font-weight:bold;}
 .question
 {
 	border-bottom: 1px solid white ; 
-	border-left: 
+	border-left: 1px solid white;
+  color: #000000;
 }
 input {
     background-color:transparent;
@@ -56,16 +75,13 @@ input {
     height:30px;
     width:150px;
     border-bottom: 1px solid;
+    color: #000000
 }
 
 input, textarea, select, button {
   margin: 0;
-
   -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
      -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
           box-sizing: border-box;
 }
 
-input:required{
-  color: red;
-}

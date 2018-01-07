@@ -9,8 +9,7 @@ from string import ascii_letters
 from django.http import HttpResponseRedirect
 
 # Create your views here.
-def home(request):
-	return render(request,'home1.html',{'user':request.user,'request':request})
+
 @login_required(login_url='/login/')
 def getQ(request):
 	if request.user.is_authenticated:			
@@ -23,13 +22,14 @@ def getQ(request):
 			while Forms.objects.filter(p_id = d).exists():
 				d=uuid.uuid4().hex[:15]
 			a.p_id = d
-			a.form_name = request.POST.get('name')
+			a.form_name = request.POST.get('name').title()
 			a.description = request.POST.get('Description')
 			a.save()
 			names=[] 
 			names=request.POST.getlist("array[]") 
 			opts=request.POST.getlist("opt[]") 
 			for i in names:
+				i=i.title()
 				a.question_set.create(ques=i,qtype=opts[k])
 				k+=1
 				a.save()
@@ -43,8 +43,8 @@ def getQ(request):
 def getAns(request,pk):
 	res=''
 	if Forms.objects.filter(pk = pk).exists():
-		a=Forms.objects.filter(pk = pk)
-		quest=a.question_set.all()
+		a=Forms.objects.get(pk = pk)
+		quest=a.question_set.all().order_by('id')
 		if request.method == "POST":
 			names=[]
 			names=request.POST.getlist("array[]") 
@@ -63,21 +63,21 @@ def getAns(request,pk):
 
 @login_required(login_url='/login/')
 def postQ(request,pk):
-	a = Forms.objects.filter(p_id = pk)
+	a = Forms.objects.get(p_id = pk)
 	quest=[]
-	quest = a.question_set.all()
+	quest = a.question_set.all().order_by('id')
 	return render(request,'admin.html',{"form":a.form_name,"questions":quest})
 
 @login_required(login_url='/login/')
 def all_forms(request):
-	a=User.objects.filter(username=request.user)
+	a=User.objects.get(username=request.user)
 	forms=[]
 	forms = a.forms_set.all()
 	return render(request,'all_forms.html',{'forms':forms})
 
 @login_required(login_url='/login/')
 def individual(request,pk , id):
-	a = Forms.objects.filter(p_id = pk)
+	a = Forms.objects.get(p_id = pk)
 	quest=[]
 	quest = a.question_set.all()
 	return render(request,"individual.html",{"questions":quest,"form_name":a.form_name,"id":id})

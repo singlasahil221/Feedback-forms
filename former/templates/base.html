@@ -15,8 +15,8 @@
 
 {% endblock page_context %}
 <div class = "container">
-	<div style="text-align: right;">
-		{%if not request.user.is_active%}<a href="/login/"><label>Login</label></a>&nbsp;&nbsp;&nbsp;{%endif%}{%if request.user.is_active%}<a href="/logout/"><label>Logout</label></a>&nbsp;&nbsp;&nbsp;<a href="/"><label>All Forms</label></a>&nbsp;&nbsp;&nbsp;<a href="/newform/"><label>+New Form</label></a>&nbsp;&nbsp;&nbsp;{%endif%}</div>
+	<div style="text-align: right; color: blue;">
+		{%if not request.user.is_active%}<a href="/login/" style="color:red;"><label>Login</label></a>&nbsp;&nbsp;&nbsp;{% else %}<a href="/logout/" style="color:red;">Logout</a>&nbsp;&nbsp;&nbsp;<a href="/" style="color:red;"><label>All Forms</label></a>&nbsp;&nbsp;&nbsp;<a href="/newform/" style="color:red;"><label>+New Form</label></a>&nbsp;&nbsp;&nbsp;{%endif%}</div>
 
 {% block content %}
 
