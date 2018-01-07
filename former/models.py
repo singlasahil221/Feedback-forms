@@ -5,7 +5,7 @@ from social_django.models import AbstractUserSocialAuth, UserSocialAuth, Nonce, 
 # Create your models here.
 class Forms(models.Model):
 	user = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank= True)
-	p_id = models.CharField(max_length = 11,primary_key=True)
+	p_id = models.CharField(max_length = 105,primary_key=True)
 	form_name = models.CharField(max_length = 50,default='')
 	description = models.CharField(max_length=1000,default='')
 	def __str__(self):
