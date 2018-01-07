@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+{%load static%}
+
+	{% block page_title %}
+	<title>{{request.user.username}}</title>
+	{% endblock page_title %}
+
+{% block content %}
+
+<h1>{{form}}</h1>
+Responses:
+<ul>
+{%for i in questions%}
+<li>{{i.ques}}({{i.id}}):</li>
+<ol>
+{%for j in i.answer_set.all%}
+
+	<li>{{j}}</li>
+
+{%endfor%}
+</ol>
+{%endfor%}
+</ul>
+{% endblock content %}

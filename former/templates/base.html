@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	
+	{% block page_title %}
+
+	{% endblock page_title %}
+
+<link rel = "stylesheet" type = "text/css" href = "{% static 'css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+{% block page_context %}
+
+{% endblock page_context %}
+<div class = "container">
+	<div style="text-align: right;">
+		{%if not request.user.is_active%}<a href="/login/"><label>Login</label></a>&nbsp;&nbsp;&nbsp;{%endif%}{%if request.user.is_active%}<a href="/logout/"><label>Logout</label></a>&nbsp;&nbsp;&nbsp;<a href="/"><label>All Forms</label></a>&nbsp;&nbsp;&nbsp;<a href="/newform/"><label>+New Form</label></a>&nbsp;&nbsp;&nbsp;{%endif%}</div>
+
+{% block content %}
+
+{% endblock content %}
+</div>
+{% block page_scripts %}
+
+{% endblock page_scripts %}
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+.container
+{
+	margin:auto;
+	background-color: #4262f4;
+	text-align:center;
+
+}
+
+/*ADD FIELD BUTTON */
+a,button{text-decoration:none;color:#fff;font-weight:bold;}
+.add-field{
+ padding:10px;
+ font-family:tahoma;
+ background-color:#F57900;
+ width:10px;
+ text-align:center;
+ display: block;
+ margin:auto;
+ clear: both;
+ border-radius: 50%;
+}
+
+/*--------------------------------------------------------------------------------------*/
+.submit
+{
+	padding:15px;
+ font-family:tahoma;
+ background-color:#122c91;
+ width:140px;
+ text-align:center;
+ text-shadow:1px 1px #4a6ae2;
+ border-bottom:5px solid #4a6ae2;
+ display: block;
+ margin:auto;
+ clear: both;
+}
+
+/*------------------------------------------------------------------------------------*/
+
+
+.dropdown , .list
+{
+	background-color: #122c91;
+}
+
+/*------------------------------------------------------------------------------------*/
+
+.question
+{
+	border-bottom: 1px solid white ; 
+	border-left: 
+}
+input {
+    background-color:transparent;
+    border: 0px transparent;
+    height:30px;
+    width:150px;
+    border-bottom: 1px solid;
+}
+
+input, textarea, select, button {
+  margin: 0;
+
+  -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+     -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+          box-sizing: border-box;
+}
+
+input:required{
+  color: red;
+}

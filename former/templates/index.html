@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+
+{% load static %}
+	
+<div class = "container">
+	{% block content %}
+<form action="/newform/" method="POST">
+	{%csrf_token %}
+   	<div class = "main1">
+   	<input type="text" name="name" placeholder="form name" required><br>
+   	<input type="text" name="Description" placeholder="Description (optional)"><br>
+   	<input type = "text" name = "array[]" id = "question0" placeholder = "type your question here" required>
+   	<select name = 'opt[]' class = "dropdown">
+  	<option value="1" class="list">Text</option>
+  	<option value="2" class="list">Number</option>
+  	<option value="3" class="list">Date</option>
+	</select>
+	<br>
+	</div>
+	<a href="#" title="" class="add-field">+</a>
+	<button type = "submit" value="submit" class = "submit">Submit</button>
+	</form>
+{% if pk %}
+ The form id is : {{pk}}
+{% endif %}	
+</div>
+
+
+<script type="text/javascript" src = "{% static 'js/script.js' %}"></script>
+{% endblock content %}
