@@ -43,7 +43,7 @@ def getQ(request):
 def getAns(request,pk):
 	res=''
 	if Forms.objects.filter(pk = pk).exists():
-		a=Forms.objects.get(pk = pk)
+		a=Forms.objects.filter(pk = pk)
 		quest=a.question_set.all()
 		if request.method == "POST":
 			names=[]
@@ -63,21 +63,21 @@ def getAns(request,pk):
 
 @login_required(login_url='/login/')
 def postQ(request,pk):
-	a = Forms.objects.get(p_id = pk)
+	a = Forms.objects.filter(p_id = pk)
 	quest=[]
 	quest = a.question_set.all()
 	return render(request,'admin.html',{"form":a.form_name,"questions":quest})
 
 @login_required(login_url='/login/')
 def all_forms(request):
-	a=User.objects.get(username=request.user)
+	a=User.objects.filter(username=request.user)
 	forms=[]
 	forms = a.forms_set.all()
 	return render(request,'all_forms.html',{'forms':forms})
 
 @login_required(login_url='/login/')
 def individual(request,pk , id):
-	a = Forms.objects.get(p_id = pk)
+	a = Forms.objects.filter(p_id = pk)
 	quest=[]
 	quest = a.question_set.all()
 	return render(request,"individual.html",{"questions":quest,"form_name":a.form_name,"id":id})
