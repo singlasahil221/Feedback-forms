@@ -139,7 +139,7 @@ body{background-color:#0c0c0c;font-size:14px;line-height:1.6;font-family:"Montse
 .about--banner img{position:absolute;bottom:-90px;right:-12px}
 .about--options{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;max-width:600px;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;margin:0;padding:0;list-style:none}
 .about--options>a{position:relative;width:150px;height:75px;text-decoration:none;color:#fff;border:1px solid #ffffff;background-position:center;background-size:cover;background-repeat:no-repeat}
-.about--options>a{background-image:url("../img/about-winners.jpg")}
+.about--options>a{}
 .about--options>a:hover h3{bottom:-20px}
 .about--options h3{position:absolute;botton:-10spx;left:10px;font-size:16px;text-transform:uppercase;-webkit-transition:bottom .2s ease-in-out,left .2s ease-in-out;transition:bottom .2s ease-in-out,left .2s ease-in-out}
 .contact{position:fixed;top:0;left:0;width:100%;height:100%;background-position:center;background-size:cover;background-repeat:no-repeat}
