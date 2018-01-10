@@ -1,0 +1,141 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DGeek Weapons</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="HTML5 website">
+  <meta name="keywords" content="SD, SD Tech, Project Handler, Software Developer">
+  <link rel="stylesheet" href="{%static 'css/main.css'%}">
+ </head>
+<body>
+
+<!-- notification for small viewports and landscape oriented smartphones -->
+<div class="device-notification">
+  <a class="device-notification--logo" href="#0">
+    <img src="assets/img/logo.png" alt="Global">
+    <p>Login/Register</p>
+  </a>
+  <p class="device-notification--message"></p>
+</div>
+
+<div class="perspective effect-rotate-left">
+  <div class="container"><div class="outer-nav--return"></div>
+    <div id="viewport" class="l-viewport">
+      <div class="l-wrapper">
+        <header class="header">
+          <a class="header--logo" href="#0">
+            <img src="assets/img/logo.png" alt="Global">
+            <p>DGeek Weapons</p>
+          </a>
+          <div class="header--nav-toggle">
+            <span></span>
+          </div>
+        </header>
+        <nav class="l-side-nav">
+          <ul class="side-nav">
+            <li class="is-active"><span>Home</span></li>
+            <li><span>Login</span></li>
+            <li><span>Register</span></li>
+            </ul>
+        </nav>
+        <ul class="l-main-content main-content">
+          <li class="l-section section section--is-active">
+            <div class="intro">
+              <div class="intro--banner">
+                <h1>DGeek Weapons <br>is a team of <br>enthusiastic <br>geeks.</h1>
+                
+                <img src="assets/img/introduction-visual.png" alt="Welcome">
+              </div>
+              <div class="intro--options">
+                <a href="#0">
+                  <h3>Manmeet Kalirawana</h3>
+                  <p>Interactive Node Ninja and Competitive Expert</p>
+                </a>
+                <a href="#0">
+                  <h3>Trilok Kaushik</h3>
+                  <p>Complier Designer and Enthusiastic Geek</p>
+                </a>
+                <a href="#0">
+                  <h3>Sahil Singla</h3>
+                  <p>Enthusiastic Coder and Mr Django of DGW</p>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="l-section section">
+            <div class="hire">
+              <!-- checkout formspree.io for easy form setup -->
+              <form class="work-request" action="/login/" method="POST">
+                {%csrf_token%}
+                <div class="work-request--information">
+                  <div class="information-name">
+                    <input id="email" name='username' type="text" spellcheck="false">
+                    <label for="email">username</label><br>
+                  <input id="password" name="password" type="password" spellcheck="false">
+                    <label for="password">password</label><br>
+                  <input type="submit" value='submit'> <br>                  
+                  </div>                            
+              </form>
+              
+              <a href="{% url 'compromise:begin' 'facebook' %}?next={{ request.path }}" class="face" style="text-align: center;"><h2> Facebook</h2></a><br>
+              <a href="{% url 'compromise:begin' 'google-oauth2' %}?next={{ request.path }}" class="goog" style="text-align: center;"><h2> Google+</h2></a>
+            </div><br> 
+            </div>
+          </li>
+          <li class="l-section section">
+            <div class="hire">
+              <!-- checkout formspree.io for easy form setup -->
+              <form class="work-request" action="/register/" method="POST">
+                {%csrf_token%}
+                <div class="work-request--information">
+                  <div class="information-name">
+                    <input id="name" name="first" type="text" spellcheck="false">
+                    <label for="fname">First Name</label><br>
+                  <!--</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="information-name">-->
+                    <input id="lname" name="last" type="text" spellcheck="false">
+                    <label for="lname">Last Name</label><br>
+                  <!--</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="information-name">-->
+                    <input id="email" name="email" type="email" spellcheck="false">
+                    <label for="email">Email</label><br>
+                  <!--</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="information-email">-->
+                    <input id="email" name='username' type="text" spellcheck="false">
+                    <label for="email">username</label><br>
+                  <!--<div class="information-name">-->
+                    <input id="password" name="password" type="password" spellcheck="false">
+                    <label for="password">password</label><br>
+                  <!--</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="information-name">-->
+                    <input id="password" name="cpassword" type="password" spellcheck="false">
+                    <label for="password">confirm password</label><br>
+                  <input type="submit" value='submit'> 
+                  </div><br>
+                </div><br>
+                
+              </form>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ul class="outer-nav">
+    <li class="is-active"><span>Home</span></li>
+            <li>Login</li>
+    <li>Register</li>
+  </ul>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{% static "js/jquery-2.2.4.min.js"%}"><\/script>')</script>
+<script src="{% static 'js/functions-min.js'%} "></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+</body>
+</html>

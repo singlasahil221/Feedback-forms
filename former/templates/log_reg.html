@@ -441,16 +441,16 @@ h1 {
     margin: 1em;
 }
 .header-social a.face:hover {
-     background: url(../images/fac.png)no-repeat 12px 6px #0E387C;
+     background: url(../images/fac.png)no-repeat 10px 5px #0E387C;
 }
 .header-social a.goog {
-    background: url(../images/google.png)no-repeat 12px 6px #D64639;
+    background: url(../images/google.png)no-repeat 10px 5px #D64639;
     font-size: 14px;
     padding: 0 2.5em;
     width: 19%;
 }
 .header-social a.goog:hover {
-    background: url(../images/google.png)no-repeat 12px 6px #ff4b3b;
+    background: url(../images/google.png)no-repeat 10px 5px #ff4b3b;
 }
 }
 /*--//responsive-design---*/
@@ -475,20 +475,16 @@ h1 {
         <div class="login-form">
           <form action="/login/" method="post">
             {%csrf_token%}
-            <input type="text" name="username" placeholder="E-mail" required="">
+            <input type="text" name="username" placeholder="Username" required="">
             <input type="password" name="password" placeholder="Password" required="">
             <div class="tp">
-              <input type="submit" value="LOGIN NOW">
+              <input type="submit" value="LOGIN">
             </div>
           </form>
         </div>
         <div class="header-social wthree">
-              <a href="{% url 'compromise:begin' 'facebook' %}?next={{ request.path }}" class="face"><h5>Facebook</h5></a>
+              <a href="{% url 'compromise:begin' 'facebook' %}?next={{ request.path }}" class="face"><h5>Facebook</h5></a><label style="color: #ffffff">/</label>
               <a href="{% url 'compromise:begin' 'google-oauth2' %}?next={{ request.path }}" class="goog"><h5>Google+</h5></a>
-              <fb:login-button 
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
 
               <div class="clear"></div>
             </div>
@@ -517,31 +513,5 @@ h1 {
     <div class="clear"></div>
     <!--//signin-form-->
   </div>
-  <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{143216813009702}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{v2.11}'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
-  function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
 </body>
 </html>

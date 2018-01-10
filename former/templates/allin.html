@@ -1,0 +1,154 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DGeek Weapons</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="HTML5 website template">
+  <meta name="keywords" content="global, template, html, sass, jquery">
+  <meta name="author" content="Bucky Maler">
+  <link rel="stylesheet" href="{%static 'css/main.css'%}">
+</head>
+<body>
+
+<!-- notification for small viewports and landscape oriented smartphones -->
+<div class="device-notification">
+  <a class="device-notification--logo" href="#0">
+    <img src="assets/img/logo.png" alt="DGW">
+    <p>Global</p>
+  </a>
+  <p class="device-notification--message">Global has so much to offer that we must request you orient your device to portrait or find a larger screen. You won't be disappointed.</p>
+</div>
+
+<div class="perspective effect-rotate-left">
+  <div class="container"><div class="outer-nav--return"></div>
+    <div id="viewport" class="l-viewport">
+      <div class="l-wrapper">
+        <header class="header">
+          <a class="header--logo" href="#0">            
+            <p>DGW-Forms</p>
+          </a> 
+          <div style="position: top-right;color: #ffffff">
+    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><label>Login</label></a>&nbsp;&nbsp;&nbsp;{% else %}<a href="/logout/" style="text-align: right;color: #ffffff">Logout</a>&nbsp;&nbsp;&nbsp;{%endif%}</div>          
+          <div class="header--nav-toggle">
+            <span></span>
+          </div>          
+        </header>
+        <nav class="l-side-nav">
+          <ul class="side-nav">
+            <li class="is-active"><span>Home</span></li>
+            <li><span>My Forms</span></li>
+            <li><span>Contact</span></li>
+            <li><span>Create new forms</span></li>
+          </ul>
+        </nav>
+        <ul class="l-main-content main-content" style="overflow: auto;">
+          <li class="l-section section section--is-active">
+            <div class="intro">
+              {% if pk %}
+<div class="btn btn-default btn-lg" id="basic-addon3" style= " background-color: #000000; border-color: #ffffff; display:inline; margin-right: 0px; clear:both; padding: 5px; color : #ffffff; border-radius: 20%"> Form Link : </div>
+  <input type="text" name="Custom"   id = "link" value = "https://feedback-forms.herokuapp.com/{{pk}}" placeholder="Form Link" style=  "width:400px; padding:2px; border-width: 4px solid; border-color: #000000;color: #000000;user-select: all;">
+<button class="btn btn-default btn-lg" data-clipboard-target="#link" type="button" onclick="myFunction()" style="background-color: #000000; border-color: #000000;">Copy</button>
+{% endif %} 
+              <div class="intro--banner">
+                <h1>DGeek Weapons <br>is a team of <br>enthusiastic <br>geeks.</h1>
+                
+                <img src="assets/img/introduction-visual.png" alt="Welcome">
+              </div>
+              <div class="intro--options">
+                <a href="#0">
+                  <h3>Manmeet Kalirawana</h3>
+                  <p>Interactive Node Ninja and Competitive Expert</p>
+                </a>
+                <a href="#0">
+                  <h3>Trilok Kaushik</h3>
+                  <p>Complier Designer and Enthusiastic Geek</p>
+                </a>
+                <a href="#0">
+                  <h3>Sahil Singla</h3>
+                  <p>Enthusiastic Coder and Mr Django of DGW</p>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="l-section section" >
+            <div class="about">
+              <div class="about--banner">
+                <a href="#0">My Forms</a>
+              </div>
+              
+              <div class="about--options">
+                {%for i in forms%}
+                <a href="/post/{{i.p_id }}/">
+                  <h3><p class="slider--item-title">{{i.form_name}}</p></h3>
+                      <p class="slider--item-description">{{i.description}}</p>
+                      {{i.form_name}}
+                </a>  
+                {%endfor%}               
+              </div>
+               
+            </div>
+          </li>
+          <li class="l-section section">
+            <div class="contact">
+              <div class="contact--lockup">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3510.6425026229012!2d77.32368831464632!3d28.369655982522247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdc64b2c8925f%3A0x4261a77cad3718f1!2sSdTech!5e0!3m2!1sen!2sin!4v1515560791165" width="800" height="600" frameborder="0" style="border:0; background-color: #000000" allowfullscreen></iframe>
+                <div class="modal">
+                  <div class="modal--information">
+                    <p>House No. 697, Sector:10, Faridabad</p>
+                    <a href="tel:+918745959048">+91 8745959048</a>
+                    <a href="tel:+919416790287">+91 9416790287</a>
+                    <a href="tel:+919916818721">+91 8816818721</a>
+                  </div>
+                  <ul class="modal--options">
+                    <li><a href="mailto:singlasahil221@gmail.com">Sahil</a></li>
+                    <li><a href="mailto:trilokkaushik0@gmail.com">Trilok</a></li>
+                    <li><a href="mailto:manmeetrana06@gmail.com">Manmeet</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="l-section section" style="overflow: auto;"> 
+            <div class="hire">
+              <!-- checkout formspree.io for easy form setup -->
+              <form class="work-request" action="/" method="POST">
+                {%csrf_token%}
+                <div class="work-request--information">
+                  <div class="information-name">
+                    <div class="main1">
+                    <input id="name" type="text" name="name" required><label>form name</label><span class="asterisk_input"> </span><br>
+                    <input type="text" name="Description" placeholder=""><label>Description (optional)</label><br>
+                    <label>question</label><br>
+                    <input type = "text" name = "array[]" id = "question0" required><span class="asterisk_input"></span>
+                    <select name="opt[]" class = "dropdown" style="color:#000000"><option value="1" class="list">Text</option><option value="2" class="list">Number</option><option value="3" class="list">Date</option></select><br>
+                    </div>
+                    <a href="#" title="" class="add-field">+</a>
+                    <input type="submit" value='submit'> 
+
+              </form>
+              </div>  
+                    </div>            2                
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ul class="outer-nav">
+    <li class="is-active">Home</li>
+    <li>My Forms</li>
+    <li>About</li>
+    <li>Create New Form</li>
+  </ul>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{% static "js/jquery-2.2.4.min.js"%}"><\/script>')</script>
+<script src="{% static 'js/functions-min.js'%} "></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+</body>
+</html>

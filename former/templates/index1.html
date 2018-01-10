@@ -16,14 +16,14 @@
   	<option value="3" class="list">Date</option>
 	</select>
 	<br>
-	</div>
+	</div> 
 	<a href="#" title="" class="add-field">+</a>
 	
 	<button type = "submit" value="submit" class = "submit">Submit</button>	
 	</form>
 	<br><br>
 {% if pk %}
-<div class="btn btn-default btn-lg" id="basic-addon3" style= " background-color: #000000; border-color: #ffffff; display:inline; margin-right: 0px; clear:both; padding: 5px; color : #ffffff"> Form Link : </div>
+<div class="btn btn-default btn-lg" id="basic-addon3" style= " background-color: #000000; border-color: #ffffff; display:inline; margin-right: 0px; clear:both; padding: 5px; color : #ffffff; border-radius: 20%"> Form Link : </div>
   <input type="text" name="Custom"   id = "link" value = "https://feedback-forms.herokuapp.com/{{pk}}" placeholder="Form Link" style=  "width:400px; padding:2px; border-width: 4px solid; border-color: #000000;">
 <button class="btn btn-default btn-lg" data-clipboard-target="#link" type="button" onclick="myFunction()" style="background-color: #000000; border-color: #000000;">Copy</button>
 {% endif %}	

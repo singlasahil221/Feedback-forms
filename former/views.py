@@ -7,13 +7,14 @@ from django.contrib.auth.decorators import login_required
 from random import choice
 from string import ascii_letters
 from django.http import HttpResponseRedirect
-
+from django.views.generic import TemplateView
+from django.utils.decorators import method_decorator
 # Create your views here.
 
 @login_required(login_url='/login/')
 def getQ(request):
 	if request.user.is_authenticated:			
-		pk=0
+		pk,forms=0,[]
 		if request.method == "POST":
 			a=Forms()
 			a.user = User.objects.get(username = request.user)		
@@ -34,11 +35,21 @@ def getQ(request):
 				k+=1
 				a.save()
 			pk = a.p_id
+			a=User.objects.get(username=request.user)
+			forms = a.forms_set.all()
 		else:
 			pass
-		return render(request,'index.html',{"pk": pk})
+		return render(request,'allin.html',{"pk": pk,'forms':forms})
 	else:
 		return redirect('/login/')
+
+@login_required(login_url='/login/')
+def postQ(request,pk):
+	a = Forms.objects.get(p_id = pk)
+	quest=[]
+	quest = a.question_set.all().order_by('id')
+	return render(request,'allin.html',{"form":a.form_name,"questions":quest})
+
 
 def getAns(request,pk):
 	res=''
@@ -59,21 +70,11 @@ def getAns(request,pk):
 			pass
 	else:
 		return Http404("does not exists")
-	return render(request,'ques.html',{"form_id": a.p_id,"name":a,"questions" : quest,"response":res})
+	return render(request,'fill-form.html',{"form_id": a.p_id,"name":a,"questions" : quest,"response":res})
 
-@login_required(login_url='/login/')
-def postQ(request,pk):
-	a = Forms.objects.get(p_id = pk)
-	quest=[]
-	quest = a.question_set.all().order_by('id')
-	return render(request,'admin.html',{"form":a.form_name,"questions":quest})
 
-@login_required(login_url='/login/')
-def all_forms(request):
-	a=User.objects.get(username=request.user)
-	forms=[]
-	forms = a.forms_set.all()
-	return render(request,'all_forms.html',{'forms':forms})
+
+
 
 @login_required(login_url='/login/')
 def individual(request,pk , id):
@@ -94,15 +95,15 @@ def login_view(request):
 					login(request, user)
 				redirect('/')
 			else:
-				return render(request,'log_reg.html',{'err':'Incorrect Username/Password!!','user':request.user,'request':request})
+				return render(request,'log.html',{'err':'Incorrect Username/Password!!','user':request.user,'request':request})
 		else:
-			return render(request,'log_reg.html',{'err':'Enter Username/Password correctly!!','user':request.user,'request':request})
+			return render(request,'log.html',{'err':'Enter Username/Password correctly!!','user':request.user,'request':request})
 	elif request.method == 'GET':
 		if request.user.is_authenticated :
 			if request.user.is_superuser :
 				return redirect('/')
 			return redirect('/')
-		return render(request,'log_reg.html',{'user':request.user,'request':request})
+		return render(request,'log.html',{'user':request.user,'request':request})
 	return redirect('/')
 
 def logout_views(request):
