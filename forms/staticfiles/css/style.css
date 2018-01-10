@@ -3,6 +3,12 @@ body {
     background:#301a47;
 }
 
+.header
+{
+	background-color:#dce3ef;
+	color:#000000;	
+}
+
 .container
 {
   color: #000000;
