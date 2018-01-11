@@ -47,7 +47,7 @@ def getQ(request):
 @login_required(redirect_field_name='next',login_url='/login/')
 def postQ(request,pk):
 	a = Forms.objects.get(p_id = pk)
-	if a.user == request.user:
+	if a.user == request.user or request.user.is_superuser:
 		quest=[]
 		quest = a.question_set.all().order_by('id')
 		return render(request,'all_reponses.html',{"form":a,"questions":quest})
@@ -104,8 +104,9 @@ def create_user(request):
 		if created:
 		    user.set_password(password) 
 		    user.save()
-		    return render(request,'log_reg.html',{'err':"success"})
+		    login(request,user)
+		    return render(request,'log.html',{'err':"success"})
 		else :
-			return render(request,'log_reg.html',{'err':"User already Exist!!"})
+			return render(request,'log.html',{'err':"User already Exist!!"})
 	else:
-		return render(request,'log_reg.html',{'err': 'doesn\'t register'})
+		return render(request,'log.html',{'err': 'doesn\'t register'})

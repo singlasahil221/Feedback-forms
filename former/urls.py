@@ -11,7 +11,7 @@ admin.autodiscover()
 urlpatterns =[
 	#url(r'^$', app_views.home, name='home'),
 	url(r'^$', app_views.getQ),
-	url(r'^login/$',auth_views.login,kwargs={'redirect_authenticated_user':True,'template_name':'log.html'}),
+	url(r'^login/',auth_views.LoginView.as_view(redirect_authenticated_user=True,template_name ='log.html'),name='login'),
 	url(r'^logout/$',logout_views),
 	url(r'^register/$',app_views.create_user),
 	#url(r'^all/$', app_views.index.as_view()),
