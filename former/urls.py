@@ -2,7 +2,7 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from .views import getAns,individual,login_view,logout_views
+from .views import getAns,individual,logout_views
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 from former import views as app_views
@@ -11,7 +11,7 @@ admin.autodiscover()
 urlpatterns =[
 	#url(r'^$', app_views.home, name='home'),
 	url(r'^$', app_views.getQ),
-	url(r'^login/$',app_views.login_view),
+	url(r'^login/$',auth_views.login,kwargs={'redirect_authenticated_user':True,'template_name':'log.html'}),
 	url(r'^logout/$',logout_views),
 	url(r'^register/$',app_views.create_user),
 	#url(r'^all/$', app_views.index.as_view()),

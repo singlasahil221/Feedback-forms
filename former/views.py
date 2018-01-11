@@ -11,7 +11,7 @@ from django.views.generic import TemplateView
 from django.utils.decorators import method_decorator
 # Create your views here.
 
-@login_required(login_url='/login/',redirect_field_name='next',)
+@login_required(redirect_field_name='next',login_url='/login/')
 def getQ(request):
 	if request.user.is_authenticated:			
 		pk,forms=0,[]
@@ -44,7 +44,7 @@ def getQ(request):
 	else:
 		return redirect('/login/')
 
-@login_required(login_url='/login/',redirect_field_name='next',)
+@login_required(redirect_field_name='next',login_url='/login/')
 def postQ(request,pk):
 	a = Forms.objects.get(p_id = pk)
 	quest=[]
@@ -77,31 +77,13 @@ def getAns(request,pk):
 
 
 
-@login_required(login_url='/login/',redirect_field_name='next',)
+@login_required(redirect_field_name='next',login_url='/login/')
 def individual(request,pk , id):
 	a = Forms.objects.get(p_id = pk)
 	quest=[]
 	quest = a.question_set.all()
 	return render(request,"individual.html",{"questions":quest,"form_name":a.form_name,"id":id})
 
-def login_view(request):
-	if request.method=='POST':
-		username=request.POST['username']
-		password = request.POST['password']
-		user = authenticate(username = username, password = password)
-		if username and password:
-			user = authenticate(username=username, password=password)
-			if user:
-				if user.is_active:
-					login(request, user)
-					return redirect('/')
-			else:
-				messages.warning(request, "Your account is disabled!")
-				return redirect('/login')
-		else:
-			messages.warning(request, "The username or password are not valid!")
-			return redirect('/login')		
-	return render(request,'log.html',{'user':request.user,'request':request})
 
 def logout_views(request):
 	logout(request)

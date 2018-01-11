@@ -77,12 +77,13 @@
                     <label for="email">username</label><br>
                   <input id="password" name="password" type="password" spellcheck="false">
                     <label for="password">password</label><br>
+                    <input type="hidden" name="next" value="{{request.get_full_path}}">
                   <input type="submit" value='Login'> <br>                 
                   </div>                            
               </form>
               
-              <a href="{% url 'compromise:begin' 'facebook' %}?next={{ request.path }}" class="face" style="text-align: center;"><h2> Facebook</h2></a><br>
-              <a href="{% url 'compromise:begin' 'google-oauth2' %}?next={{ request.path }}" class="goog" style="text-align: center;"><h2> Google+</h2></a>
+              <a href="{% url 'compromise:begin' 'facebook' %}?next={{ request.get_full_path }}" class="face" style="text-align: center;"><h2> Facebook</h2></a><br>
+              <a href="{% url 'compromise:begin' 'google-oauth2' %}?next={{ request.get_full_path }}" class="goog" style="text-align: center;"><h2> Google+</h2></a>
             </div><br> 
             </div>
           </li>

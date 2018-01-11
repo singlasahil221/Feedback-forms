@@ -30,8 +30,8 @@
           <a class="header--logo" href="#0">            
             <p>DGW-Forms</p>
           </a> 
-          <div style="position: top-right;color: #ffffff">
-    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><label>Login</label></a>&nbsp;&nbsp;&nbsp;{% else %}<a href="/logout/" style="text-align: right;color: #ffffff">Logout</a>&nbsp;&nbsp;&nbsp;{%endif%}</div>          
+          <div style="color: #ffffff; text-align: right;">
+    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><label>Login</label></a>&nbsp;&nbsp;&nbsp;{% else %}<a href="/" style="text-align: right;color: #ffffff">Home</a>&nbsp;&nbsp;&nbsp;<a href="/logout/" style="text-align: right;color: #ffffff">Logout</a>&nbsp;&nbsp;&nbsp;<a href="/{{form.p_id}}/" style="color: #ffffff">Preview</a>{%endif%}</div>          
           <div class="header--nav-toggle">
             <span></span>
           </div>          
@@ -46,7 +46,7 @@
             <div class="intro">             
               <div class="intro--banner">
               <div style="text-align: left;">
-                <a href="/{{form.p_id}}/" style="color:#ffffff">Preview</a>
+                
               </div>
             <div class="about">
               <div class="about--banner">
