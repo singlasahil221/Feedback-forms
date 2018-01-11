@@ -32,7 +32,7 @@
             <p>DGW-Forms</p>
           </a> 
           <div style="position: top-right;color: #ffffff">
-    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;"><label>Login</label></button></a>{% else %}&nbsp;&nbsp;&nbsp;{% if request.user.is_superuser %}Hello MyLord!{% elif name.user == request.user %} Hi Admin!&nbsp;<a href="/post/{{name.p_id}}/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Responses</button></a>{%else%}Hi {{request.user.first_name}}!&nbsp;{%endif%}&nbsp;&nbsp;&nbsp;<a href="/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Home</button></a>&nbsp;&nbsp;&nbsp;<a href="/logout/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Logout</button></a>{%endif%}</div>          
+    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;"><label>Login</label></button></a>{% else %}&nbsp;&nbsp;&nbsp;{% if request.user.is_superuser %}Hello MyLord!&nbsp;<a href="/post/{{name.p_id}}/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Responses</button></a>{% elif name.user == request.user  %} Hi Admin!&nbsp;<a href="/post/{{name.p_id}}/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Responses</button></a>{%else%}Hi {{request.user.first_name}}!&nbsp;{%endif%}&nbsp;&nbsp;&nbsp;<a href="/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Home</button></a>&nbsp;&nbsp;&nbsp;<a href="/logout/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Logout</button></a>{%endif%}</div>          
           <div class="header--nav-toggle">
             <span></span>
           </div>          
@@ -127,10 +127,10 @@
               <!-- checkout formspree.io for easy form setup -->
               <form class="work-request" action="/{{name.p_id}}/" method="POST">
                 {%csrf_token%}
-                <div class="work-request--information">
-                  <div class="information-name" style="text-align: center;">
+                <div class="work-request--information" style="text-align: right;">
+                  <div class="information-name" style="text-align: right;">
 
-                    <label>{{name.form_name}}</label><br>
+                    <label style="">{{name.form_name}}</label><br>
                     <label>{{name.description}}</label>
                     <br>
                     {%for i in questions %}

@@ -79,19 +79,20 @@ document.getElementById("copy").onclick = function() {
               </div>
             </div>
           </li>
-          <li class="l-section section" >
+          <li class="l-section section" style="overflow: auto;" >
             <div class="about">
               <div class="about--banner">
-                <a href="#0">My Forms</a>
-              
+                <h1><a href="#0">My Forms</a></h1>
+              <ul>
                 {%for i in forms%}
-                <div class = "make-float">                
+                <li><div class = "make-float">                
                 <a href="/post/{{i.p_id }}/" style="color: #ffffff">
                   <h3 style="color: #ffffff">{{i.form_name}}</h3>
                       {{i.description}}
                 </a> 
-                </div> 
-                {%endfor%}               
+                </div></li> 
+                {%endfor%}
+                </ul>               
               </div>
                
             </div>
