@@ -48,14 +48,16 @@
         <ul class="l-main-content main-content">
           <li class="l-section section section--is-active">
             <div class="intro">
-              {% if pk %}
-              <div>
-<div class="btn btn-default btn-lg" id="basic-addon3" style= " background-color: #1d50a3; border-color: #f2690e; display:inline; margin-right: 0px; clear:both; padding: 5px;">Form URL : </div>
-  <input type="text" name="Custom"   id = "link" value = "https://feedback-forms.herokuapp.com/{{pk}}" placeholder="pk" style=  "width:400px; padding:10px;color: #000000">
-<button class="btn btn-default btn-lg" data-clipboard-target="#link" type="button" onclick="myFunction()" style=" background-color: #1d50a3;">
-              Copy
-            </button></div>
-{% endif %}
+{% if pk %}
+<div style="width: 40%;background-color: #1d50a3; text-align: center;">
+<label id="myBtn" style="background-color: #1d50a3;">Form Link</label><input id ="copy-text" type="text" value="https://feedback-forms.herokuapp.com/{{pk}}" style="color: #000; width: 100%;"><button id = "copy" style="background-color: #1d50a3;">Copy</button>
+</div>
+<script>
+document.getElementById("copy").onclick = function() {
+  document.getElementById("copy-text").select();
+  document.execCommand('copy');
+}
+</script>{% endif %}
               <div class="intro--banner">
                 <h1>DGeek Weapons <br>is a team of <br>enthusiastic <br>geeks.</h1>
                 
