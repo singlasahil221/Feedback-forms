@@ -16,7 +16,7 @@
 <!-- notification for small viewports and landscape oriented smartphones -->
 <div class="device-notification">
   <a class="device-notification--logo" href="#0">
-    <img src="assets/img/logo.png" alt="DGW">
+    <img src="{% static 'images/logo.png' %}" alt="DGW">
     <p>Global</p>
   </a>
   <p class="device-notification--message">Global has so much to offer that we must request you orient your device to portrait or find a larger screen. You won't be disappointed.</p>
@@ -27,11 +27,12 @@
     <div id="viewport" class="l-viewport">
       <div class="l-wrapper">
         <header class="header">
-          <a class="header--logo" href="#0">            
+          <a class="header--logo" href="#0">
+          <img src="{% static 'images/logo.png'%}" alt="DGW">            
             <p>DGW-Forms</p>
           </a> 
           <div style="position: top-right;color: #ffffff">
-    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><label>Login</label></a>&nbsp;&nbsp;&nbsp;{% else %}<a href="/logout/" style="text-align: right;color: #ffffff">Logout</a>&nbsp;&nbsp;&nbsp;{%endif%}</div>          
+    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><label><button style="background-color: #1d50a3;">Login</button></label></a>&nbsp;&nbsp;&nbsp;{% else %}Hi {{ request.user.username }}!&nbsp;&nbsp;&nbsp; <a href="/logout/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Logout</button></a>&nbsp;&nbsp;&nbsp;{%endif%}</div>          
           <div class="header--nav-toggle">
             <span></span>
           </div>          
@@ -44,18 +45,21 @@
             <li><span>Create new forms</span></li>
           </ul>
         </nav>
-        <ul class="l-main-content main-content" style="overflow: auto;">
+        <ul class="l-main-content main-content">
           <li class="l-section section section--is-active">
             <div class="intro">
               {% if pk %}
-<div class="btn btn-default btn-lg" id="basic-addon3" style= " background-color: #000000; border-color: #ffffff; display:inline; margin-right: 0px; clear:both; padding: 5px; color : #ffffff; border-radius: 20%"> Form Link : </div>
-  <input type="text" name="Custom"   id = "link" value = "https://feedback-forms.herokuapp.com/{{pk}}" placeholder="Form Link" style=  "width:400px; padding:2px; border-width: 4px solid; border-color: #000000;color: #000000;user-select: all;">
-<button class="btn btn-default btn-lg" data-clipboard-target="#link" type="button" onclick="myFunction()" style="background-color: #000000; border-color: #000000;">Copy</button>
-{% endif %} 
+              <div>
+<div class="btn btn-default btn-lg" id="basic-addon3" style= " background-color: #1d50a3; border-color: #f2690e; display:inline; margin-right: 0px; clear:both; padding: 5px;">Form URL : </div>
+  <input type="text" name="Custom"   id = "link" value = "https://feedback-forms.herokuapp.com/{{pk}}" placeholder="pk" style=  "width:400px; padding:10px;color: #000000">
+<button class="btn btn-default btn-lg" data-clipboard-target="#link" type="button" onclick="myFunction()" style=" background-color: #1d50a3;">
+              Copy
+            </button></div>
+{% endif %}
               <div class="intro--banner">
                 <h1>DGeek Weapons <br>is a team of <br>enthusiastic <br>geeks.</h1>
                 
-                <img src="assets/img/introduction-visual.png" alt="Welcome">
+                <img src="{% static 'images/introduction-visual.png' %}" alt="Welcome">
               </div>
               <div class="intro--options">
                 <a href="#0">
@@ -148,6 +152,9 @@
 <script>window.jQuery || document.write('<script src="{% static "js/jquery-2.2.4.min.js"%}"><\/script>')</script>
 <script src="{% static 'js/functions-min.js'%} "></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
 
 </body>
 </html>

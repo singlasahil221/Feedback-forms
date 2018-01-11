@@ -47,9 +47,13 @@ def getQ(request):
 @login_required(redirect_field_name='next',login_url='/login/')
 def postQ(request,pk):
 	a = Forms.objects.get(p_id = pk)
-	quest=[]
-	quest = a.question_set.all().order_by('id')
-	return render(request,'all_reponses.html',{"form":a,"questions":quest})
+	if a.user == request.user:
+		quest=[]
+		quest = a.question_set.all().order_by('id')
+		return render(request,'all_reponses.html',{"form":a,"questions":quest})
+	else:
+		raise Http404('Not accessible.')
+
 
 
 def getAns(request,pk):

@@ -16,7 +16,7 @@
 <!-- notification for small viewports and landscape oriented smartphones -->
 <div class="device-notification">
   <a class="device-notification--logo" href="#0">
-    <img src="assets/img/logo.png" alt="DGW">
+    <img src="{% static 'images/logo.png' %}" alt="DGW">
     <p>Global</p>
   </a>
   <p class="device-notification--message">Global has so much to offer that we must request you orient your device to portrait or find a larger screen. You won't be disappointed.</p>
@@ -27,11 +27,12 @@
     <div id="viewport" class="l-viewport">
       <div class="l-wrapper">
         <header class="header">
-          <a class="header--logo" href="#0">            
+          <a class="header--logo" href="#0">
+          <img src="{% static 'images/logo.png'%}" alt="DGW">            
             <p>DGW-Forms</p>
           </a> 
           <div style="position: top-right;color: #ffffff">
-    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><label>Login</label></a>&nbsp;&nbsp;&nbsp;{% else %}<a href="/logout/" style="text-align: right;color: #ffffff">Logout</a>&nbsp;&nbsp;&nbsp;{%endif%}</div>          
+    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;"><label>Login</label></button></a>&nbsp;&nbsp;&nbsp;{% else %}<a href="/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Home</button></a>&nbsp;&nbsp;&nbsp;{%if name.user == request.user %}<a href="/post/{{name.p_id}}/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Responses</button></a>{%endif%}&nbsp;&nbsp;&nbsp;<a href="/logout/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Logout</button></a>{%endif%}</div>          
           <div class="header--nav-toggle">
             <span></span>
           </div>          
@@ -50,7 +51,7 @@
               <div class="intro--banner">
                 <h1>DGeek Weapons <br>is a team of <br>enthusiastic <br>geeks.</h1>
                 
-                <img src="assets/img/introduction-visual.png" alt="Welcome">
+                <img src="{% static 'images/introduction-visual.png' %}" alt="Welcome">
               </div>
               <div class="intro--options">
                 <a href="#0">
