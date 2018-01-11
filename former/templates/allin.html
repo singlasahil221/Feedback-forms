@@ -32,7 +32,7 @@
             <p>DGW-Forms</p>
           </a> 
           <div style="position: top-right;color: #ffffff">
-    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><label><button style="background-color: #1d50a3;">Login</button></label></a>&nbsp;&nbsp;&nbsp;{% else %}Hi {{ request.user.username }}!&nbsp;&nbsp;&nbsp; <a href="/logout/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Logout</button></a>&nbsp;&nbsp;&nbsp;{%endif%}</div>          
+    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><label><button style="background-color: #1d50a3;">Login</button></label></a>&nbsp;&nbsp;&nbsp;{% else %}{% if request.user.is_superuser %}Hello MyLord! {% else %}Hi {{request.user.first_name}}!{%endif%}&nbsp;&nbsp;&nbsp; <a href="/logout/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Logout</button></a>&nbsp;&nbsp;&nbsp;{%endif%}</div>          
           <div class="header--nav-toggle">
             <span></span>
           </div>          

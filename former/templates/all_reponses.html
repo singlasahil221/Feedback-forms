@@ -32,7 +32,8 @@
             <p>DGW-Forms</p>
           </a> 
           <div style="color: #ffffff; text-align: right;">
-    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;"><label>Login</label></button></a>&nbsp;&nbsp;&nbsp;{% else %}Hi {{request.user}} this form belongs to {{form.user}}<a href="/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Home</button></a>&nbsp;&nbsp;&nbsp;<a href="/logout/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Logout</button></a>&nbsp;&nbsp;&nbsp;<a href="/{{form.p_id}}/" style="color: #ffffff"><button style="background-color: #1d50a3;">Preview</button></a>&nbsp;&nbsp;
+    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;"><label>Login</label></button></a>&nbsp;&nbsp;&nbsp;{% else %}
+    {% if request.user.is_superuser %}Hello MyLord! {% else %}Hi {{request.user.first_name}}!{%endif%}<a href="/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Home</button></a>&nbsp;&nbsp;&nbsp;<a href="/logout/" style="text-align: right;color: #ffffff"><button style="background-color: #1d50a3;">Logout</button></a>&nbsp;&nbsp;&nbsp;<a href="/{{form.p_id}}/" style="color: #ffffff"><button style="background-color: #1d50a3;">Preview</button></a>&nbsp;&nbsp;
 <style>
 /* The Modal (background) */
 .modal {
