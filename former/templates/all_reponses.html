@@ -1,0 +1,88 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DGeek Weapons</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="HTML5 website template">
+  <meta name="keywords" content="global, template, html, sass, jquery">
+  <meta name="author" content="Bucky Maler">
+  <link rel="stylesheet" href="{%static 'css/main.css'%}">
+</head>
+<body>
+
+<!-- notification for small viewports and landscape oriented smartphones -->
+<div class="device-notification">
+  <a class="device-notification--logo" href="#0">
+    <img src="assets/img/logo.png" alt="DGW">
+    <p>Global</p>
+  </a>
+  <p class="device-notification--message">Global has so much to offer that we must request you orient your device to portrait or find a larger screen. You won't be disappointed.</p>
+</div>
+
+<div class="perspective effect-rotate-left">
+  <div class="container"><div class="outer-nav--return"></div>
+    <div id="viewport" class="l-viewport">
+      <div class="l-wrapper">
+        <header class="header">
+          <a class="header--logo" href="#0">            
+            <p>DGW-Forms</p>
+          </a> 
+          <div style="position: top-right;color: #ffffff">
+    {%if not request.user.is_active%}<a href="/login/" style="text-align: right;color: #ffffff"><label>Login</label></a>&nbsp;&nbsp;&nbsp;{% else %}<a href="/logout/" style="text-align: right;color: #ffffff">Logout</a>&nbsp;&nbsp;&nbsp;{%endif%}</div>          
+          <div class="header--nav-toggle">
+            <span></span>
+          </div>          
+        </header>
+        <nav class="l-side-nav">
+          <ul class="side-nav">
+            <li class="is-active"><span>Responses for {{form.form_name}}</span></li>            
+          </ul>
+        </nav>
+        <ul class="l-main-content main-content" style="overflow: auto;">
+          <li class="l-section section section--is-active">
+            <div class="intro">             
+              <div class="intro--banner">
+              <div style="text-align: left;">
+                <a href="/{{form.p_id}}/" style="color:#ffffff">Preview</a>
+              </div>
+            <div class="about">
+              <div class="about--banner">
+                             
+                {%for i in questions%}
+                <div class = "make-float">                
+                  <h3 style="color: #ffffff">{{i.ques}}</h3> 
+                  <ul>
+                    {%for j in i.answer_set.all%}
+                    <li>{{j}}</li>
+                    {%endfor%}
+                  </ul>
+                </div> 
+                {%endfor%}               
+              </div>
+               </div>
+            </div>
+            </div>
+          </li> 
+          <li  class="l-section section">
+            
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ul class="outer-nav">
+    <li class="is-active">Responses for {{form.form_name}}</li>
+    
+  </ul>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{% static "js/jquery-2.2.4.min.js"%}"><\/script>')</script>
+<script src="{% static 'js/functions-min.js'%} "></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+</body>
+</html>

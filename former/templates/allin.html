@@ -77,15 +77,14 @@
             <div class="about">
               <div class="about--banner">
                 <a href="#0">My Forms</a>
-              </div>
               
-              <div class="about--options">
                 {%for i in forms%}
-                <a href="/post/{{i.p_id }}/">
-                  <h3><p class="slider--item-title">{{i.form_name}}</p></h3>
-                      <p class="slider--item-description">{{i.description}}</p>
-                      {{i.form_name}}
-                </a>  
+                <div class = "make-float">                
+                <a href="/post/{{i.p_id }}/" style="color: #ffffff">
+                  <h3 style="color: #ffffff">{{i.form_name}}</h3>
+                      {{i.description}}
+                </a> 
+                </div> 
                 {%endfor%}               
               </div>
                

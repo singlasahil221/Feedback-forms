@@ -207,3 +207,8 @@ body{background-color:#0c0c0c;font-size:14px;line-height:1.6;font-family:"Montse
 .asterisk_input:after{content:" *";color: #e32;position: absolute; margin: 0px 0px 0px -10px; font-size: large; padding: 0 2px 0 0;}
 .add-field{ padding:5px; font-family:tahoma; background-color: #000000; width: 15px; text-align:center; display: block; margin:auto; clear: both; border-radius: 100%; color: #ffffff ;}
 .prop input:focus+label,.prop input.has-value+label{left:-100px;font-size:12px}
+
+.make-float{
+	height: 100px;width: 100%;
+}
+.make-float:focus{background-color: #494a4c;}

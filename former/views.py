@@ -11,10 +11,12 @@ from django.views.generic import TemplateView
 from django.utils.decorators import method_decorator
 # Create your views here.
 
-@login_required(login_url='/login/')
+@login_required(login_url='/login/',redirect_field_name='next',)
 def getQ(request):
 	if request.user.is_authenticated:			
 		pk,forms=0,[]
+		a=User.objects.get(username=request.user)
+		forms = a.forms_set.all()
 		if request.method == "POST":
 			a=Forms()
 			a.user = User.objects.get(username = request.user)		
@@ -35,20 +37,19 @@ def getQ(request):
 				k+=1
 				a.save()
 			pk = a.p_id
-			a=User.objects.get(username=request.user)
-			forms = a.forms_set.all()
+			
 		else:
 			pass
 		return render(request,'allin.html',{"pk": pk,'forms':forms})
 	else:
 		return redirect('/login/')
 
-@login_required(login_url='/login/')
+@login_required(login_url='/login/',redirect_field_name='next',)
 def postQ(request,pk):
 	a = Forms.objects.get(p_id = pk)
 	quest=[]
 	quest = a.question_set.all().order_by('id')
-	return render(request,'allin.html',{"form":a.form_name,"questions":quest})
+	return render(request,'all_reponses.html',{"form":a,"questions":quest})
 
 
 def getAns(request,pk):
@@ -76,7 +77,7 @@ def getAns(request,pk):
 
 
 
-@login_required(login_url='/login/')
+@login_required(login_url='/login/',redirect_field_name='next',)
 def individual(request,pk , id):
 	a = Forms.objects.get(p_id = pk)
 	quest=[]
@@ -93,18 +94,14 @@ def login_view(request):
 			if user:
 				if user.is_active:
 					login(request, user)
-				redirect('/')
+					return redirect('/')
 			else:
-				return render(request,'log.html',{'err':'Incorrect Username/Password!!','user':request.user,'request':request})
+				messages.warning(request, "Your account is disabled!")
+				return redirect('/login')
 		else:
-			return render(request,'log.html',{'err':'Enter Username/Password correctly!!','user':request.user,'request':request})
-	elif request.method == 'GET':
-		if request.user.is_authenticated :
-			if request.user.is_superuser :
-				return redirect('/')
-			return redirect('/')
-		return render(request,'log.html',{'user':request.user,'request':request})
-	return redirect('/')
+			messages.warning(request, "The username or password are not valid!")
+			return redirect('/login')		
+	return render(request,'log.html',{'user':request.user,'request':request})
 
 def logout_views(request):
 	logout(request)
