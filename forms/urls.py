@@ -24,7 +24,7 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^',include('former.urls')),
-    url('', include('social_django.urls', namespace='compromise')),
+    url(r'^oauth/', include('social_django.urls', namespace='compromise')),
     url('', include('django.contrib.auth.urls', namespace='noteq')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
