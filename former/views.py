@@ -104,8 +104,7 @@ def create_user(request):
 		if created:
 		    user.set_password(password) 
 		    user.save()
-		    login(request,user)
-		    return render(request,'log.html',{'err':"success"})
+		    return redirect('/')
 		else :
 			return render(request,'log.html',{'err':"User already Exist!!"})
 	else:
