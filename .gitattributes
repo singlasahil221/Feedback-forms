@@ -1,4 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 *.py linguist-language=Python
+forms/staticfiles/* linguist-vendored
+former/templates/* linguist-vendored
 former/* linguist-documentation
